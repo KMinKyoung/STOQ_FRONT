@@ -1,7 +1,7 @@
 'use client';
  import { useParams, useRouter } from 'next/navigation';
  import { useEffect, useState } from 'react'; 
- import axios from 'axios';
+ import axios from '@/lib/axios';
  import Header from '@/components/Header'; 
 
 
@@ -18,9 +18,10 @@
      if (!cafe) return <div className="p-8">불러오는 중...</div>;
      const formattedTime = `${new Date(cafe.openTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ~ ${new Date(cafe.closeTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`; 
      return (
-        <div>
+        <div className='bg-white'>
         <Header />
-        <main className="p-8 max-w-6xl mx-auto"> 
+        <section className='w-full bg-[#331715] text-white py-10 px-6'>
+
             <div className="flex flex-col md:flex-row gap-8"> 
                 <div className="w-full md:w-1/2 bg-gray-200 h-64 rounded-md flex items-center justify-center"> 
                 <p className="text-gray-500">슬라이드 이미지 영역</p> 
@@ -37,6 +38,8 @@
                 </button>
             </div>
         </div>
+        </section>
+              <main className="bg-white p-8 max-w-6xl mx-auto text-gray-800"> 
             <div className="mt-12">
                 <h2 className="text-xl font-semibold mb-4">상세 정보</h2> 
                 <p className="text-gray-700">{cafe.location}</p> 

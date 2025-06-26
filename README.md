@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+본 프로젝트는 스터디룸 예약 웹 사이트로 사용자 편의성과 실제 서비스와 유사한 흐름을 고려하여 설계 및 구현하였습니다.
+프론트엔드는 **Next.js (App Router 기반)** 를 중심으로 구성되었습니다.
 
-## Getting Started
+**1. 공통 레이아웃 및 구조**
+- Header 컴포넌트로 공통 네비게이션 구성
+    - 로그인 상태에 따라 버튼 동적으로 변경 (로그인/회원가입 <-> 마이페이지/로그아웃)
+    - localStorage 기반 JWT 로그인 상태 감지 및 상태 유지
+= 중앙집중식 라우팅 관리(lib/routes.js)
 
-First, run the development server:
+**2.메인 페이지(스터디룸 검색)**
+- 상단에 갈색 배경과 검색바
+- 스터디룸 카드 목록을 반응형 그리드로 표시
+    - 카페이름, 주소, 평점, 리뷰 수 포함(추후에 평점과 리뷰에 대한 내용을 추가할 예정)
+    - 카드 클릭 시 상세 페이지로 이동
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**3. 스터디룸 상세 페이지**
+- 이미지 슬라이드(예정) + 영업 정보 표시
+- '좌석 예약하기' 버튼과 예약 페이지 연동
+-  하단에는 상세 설명 및 지도 영역 포함(카카오맵 등 추가 예정)
+- 특정 스터디룸에 대한 정보를 studyrooms/:id로 라우팅하여 출력
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**4. 로그인/회원가입 페이지**
+- 심플한 레이아웃 기반의 로그인 / 회원가입 폼 구현
+- 로그인 시 JWT를 localStorage에 저장하여 인증 상태 유지
+- 비로그인 사용자에게는 로그인/회원가입 노출. 로그인시 마이페이지 전환
+- 로그인 만료 감지 기능 포함(accessToken 만료 시 자동 로그아웃)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**5. 디자인 요소**
+- 페이지별 명확한 시각적 구분(배경색, 여백, 반응형 레이아웃 등)
+- 배경 및 폰트 색상 대비 고려
+= 향후 슬라이드/모달/애니메이션 추가도 고려한 구조 설계

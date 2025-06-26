@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
-import Header from '../../components/Header';
+import axios from '@/lib/axios';
+import Header from '@/components/Header';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function LoginPage() {
       localStorage.setItem('accessToken', res.data.accessToken);
       router.push('/');
     } catch (err) {
-      alert('로그인 실패: ' + (err.response?.data?.message || '알 수 없는 오류'));
+      alert('로그인 실패: ' + (err.response?.data?.message || '존재하지 않는 사용자입니다.'));
     }
   };
 

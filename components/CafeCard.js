@@ -15,7 +15,7 @@ export default function CafeCard({cafe}) {
     return (
         <div 
         onClick={goToDetail}
-        className="bg-white rounded-xl shadow-sm p-4 flex flex-col justify-between h-full">
+        className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 flex flex-col justify-between h-full">
             <div>
                 <h2 className="text-lg font-bold">{cafe.name}</h2>
                 <p className="text-sm text-gray-600">{cafe.address}</p>
