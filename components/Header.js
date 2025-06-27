@@ -48,6 +48,7 @@ export default function Header(){
             {isLoggedIn ? (
                 <>
                  <Link href={ROUTES.MYPAGE}>마이페이지</Link>
+                 <Link href={ROUTES.CHARGE}>이용권 구매</Link>
                  <button onClick={handleLogout} className="hover:underline">로그아웃</button>
                 </>
             ) :(
