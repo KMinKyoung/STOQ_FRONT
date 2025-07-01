@@ -15,18 +15,23 @@ export default function LoginPage() {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  console.log("🔥 로그인 시도:", form);
+
   try {
     const res = await axios.post('/auth/login', form);
-    console.log("✅ 응답 도착:", res.data);
-    const token = res.data.accessToken;
+    console.log("✅ 로그인 응답:", res);
+
+    const token = res.data?.accessToken;
     if (!token) {
-      throw new Error('토큰 없음');
+      console.warn("⚠️ 토큰이 없습니다. 응답:", res.data);
+      alert("로그인 실패: 토큰이 없습니다.");
+      return;
     }
 
     localStorage.setItem('accessToken', token);
-    console.log("➡️ 토큰 저장 완료, 홈으로 이동 시도");
-    router.push('/'); // ← 여기서 안 가면 라우터 문제
-    // window.location.href = '/'; // 이걸로 대체 가능
+    console.log("📦 토큰 저장 완료");
+
+    router.push('/');
   } catch (err) {
     console.error("❌ 로그인 실패:", err);
     alert('로그인 실패: ' + (err.response?.data?.message || err.message || '오류 발생'));
