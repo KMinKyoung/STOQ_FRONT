@@ -64,6 +64,14 @@ export default function LoginPage() {
             >
               로그인
             </button>
+            <button
+  type="submit"
+  onClick={() => console.log('버튼 클릭됨')}
+  className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 transition"
+>
+  로그인
+</button>
+
           </form>
         </div>
       </main>
