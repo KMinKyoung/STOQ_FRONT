@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from '@/lib/axios';
 import Header from "@/components/Header";
 
-export default function chargePage(){
+export default function ChargePage() {
     const [product, setProducts] = useState([]);
     const [selectedProductId, setSelectedProductId] = useState(null);
     const [message, setMessage] = useState('');
