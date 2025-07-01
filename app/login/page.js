@@ -13,17 +13,26 @@ export default function LoginPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-     console.log("🔥 로그인 시도:", form); 
-    try {
-      const res = await axios.post('/auth/login', form);
-      localStorage.setItem('accessToken', res.data.accessToken);
-      router.push('/');
-    } catch (err) {
-      alert('로그인 실패: ' + (err.response?.data?.message || '존재하지 않는 사용자입니다.'));
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post('/auth/login', form);
+    console.log("✅ 응답 도착:", res.data);
+    const token = res.data.accessToken;
+    if (!token) {
+      throw new Error('토큰 없음');
     }
-  };
+
+    localStorage.setItem('accessToken', token);
+    console.log("➡️ 토큰 저장 완료, 홈으로 이동 시도");
+    router.push('/'); // ← 여기서 안 가면 라우터 문제
+    // window.location.href = '/'; // 이걸로 대체 가능
+  } catch (err) {
+    console.error("❌ 로그인 실패:", err);
+    alert('로그인 실패: ' + (err.response?.data?.message || err.message || '오류 발생'));
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -64,14 +73,6 @@ export default function LoginPage() {
             >
               로그인
             </button>
-            <button
-  type="submit"
-  onClick={() => console.log('버튼 클릭됨')}
-  className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 transition"
->
-  로그인
-</button>
-
           </form>
         </div>
       </main>
