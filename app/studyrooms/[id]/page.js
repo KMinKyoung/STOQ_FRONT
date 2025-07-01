@@ -10,7 +10,7 @@
     const router = useRouter();
     const [cafe, setCafe] = useState(null); 
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/studyrooms/details/${id}`) 
+        axios.get(`/api/studyrooms/details/${id}`) 
         .then(res => setCafe(res.data)) 
         .catch(err => console.error("상세정보 불러오기 실패", err));
      }, [id]);

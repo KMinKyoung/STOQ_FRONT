@@ -16,7 +16,7 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8080/auth/login', form);
+      const res = await axios.post('/auth/login', form);
       localStorage.setItem('accessToken', res.data.accessToken);
       router.push('/');
     } catch (err) {

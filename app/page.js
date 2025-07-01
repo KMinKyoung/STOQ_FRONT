@@ -10,7 +10,7 @@ export default function HomePage() {
   const [cafes, setCafes] =useState([]);
   
     useEffect(()=> {
-      axios.get('http://localhost:8080/api/studyrooms')
+      axios.get('/api/studyrooms')
       .then((res)=>{
        setCafes(res.data);
       })
