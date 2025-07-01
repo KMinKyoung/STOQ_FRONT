@@ -19,22 +19,23 @@ const handleSubmit = async (e) => {
 
   try {
     const res = await axios.post('/auth/login', form);
-    console.log("✅ 로그인 응답:", res);
+    console.log("✅ 응답 도착:", res); // 🔍 응답 전체 확인
 
     const token = res.data?.accessToken;
+    console.log("📦 받은 토큰:", token);
+
     if (!token) {
-      console.warn("⚠️ 토큰이 없습니다. 응답:", res.data);
       alert("로그인 실패: 토큰이 없습니다.");
       return;
     }
 
     localStorage.setItem('accessToken', token);
-    console.log("📦 토큰 저장 완료");
+    console.log("🟢 토큰 저장 완료 → 페이지 이동");
 
     router.push('/');
   } catch (err) {
-    console.error("❌ 로그인 실패:", err);
-    alert('로그인 실패: ' + (err.response?.data?.message || err.message || '오류 발생'));
+    console.error("❌ 에러 발생:", err);
+    alert('로그인 실패: ' + (err.response?.data?.message || err.message || '서버 오류'));
   }
 };
 
