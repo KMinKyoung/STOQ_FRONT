@@ -15,6 +15,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+     console.log("🔥 로그인 시도:", form); 
     try {
       const res = await axios.post('/auth/login', form);
       localStorage.setItem('accessToken', res.data.accessToken);
