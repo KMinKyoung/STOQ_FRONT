@@ -3,6 +3,7 @@
  import { useEffect, useState } from 'react'; 
  import axios from '@/lib/axios';
  import Header from '@/components/Header'; 
+ import StudyMap from '@/components/studymap';
 
 
  export default function StudyRoomDetailPage() { 
@@ -45,8 +46,10 @@
                 <p className="text-gray-700">{cafe.location}</p> 
                 <div className="mt-8">
                 <h2 className="text-xl font-semibold mb-4">위치</h2> 
+ 
                 <div className="w-full h-64 bg-gray-100 rounded-md flex items-center justify-center"> 
-                    <p className="text-gray-500">지도 영역 (예: 카카오맵)</p> 
+                      <StudyMap latitude={cafe.latitude} longitude={cafe.longitude} />
+
                     </div>
                 </div>
             </div>
