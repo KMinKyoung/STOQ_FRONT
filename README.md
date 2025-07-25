@@ -5,8 +5,7 @@
 
 ## ⚙️ 기술 스택
 - Next.js
-- Tailwind CSS
-- Lucide React / shadcn UI
+- React
 - Fetch API(백엔드와 통신)
 
 ## 주요 기능 구현 현황
